@@ -14,7 +14,7 @@ module Liquid
         name    = template_path.split('/').last
         prefix  = template_path.split('/')[0...-1].join('/')
 
-        result  = view.view_paths.find_all(name, prefix, true, lookup_details)
+        result  = view.view_paths.find_all(name, prefix, true, lookup_details, nil, [])
         raise FileSystemError, "No such template '#{template_path}'" unless result.present?
 
         result.first.source
@@ -26,11 +26,10 @@ module Liquid
 
       def lookup_details
         {
-          locale:   [view.locale, :en],
-          formats:  view.formats,
+          locale: [view.locale, :en],
+          formats: view.formats,
           variants: [],
-          handlers: [:liquid],
-          versions: []
+          handlers: [:liquid]
         }
       end
     end
