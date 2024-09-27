@@ -6,7 +6,7 @@ module Liquid
       let(:context) { ::Liquid::Context.new }
 
       before do
-        context.registers[:view] = ActionView::Base.new
+        context.registers[:view] = ActionView::Base.new(ActionController::Base.view_paths, {}, {})
       end
 
       it 'translate with default locale' do

@@ -1,5 +1,5 @@
 require 'liquid-rails/version'
-require 'liquid'
+require 'liquid/c'
 require 'kaminari'
 require 'active_support/concern'
 
